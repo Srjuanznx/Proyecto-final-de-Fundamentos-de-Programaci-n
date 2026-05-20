@@ -80,7 +80,7 @@ flowchart LR
     E --> F[Mostrar información del viaje]
     F --> G[Confirmación]
     G --> H[Fin]
-
+    
 ```
 
 ---
