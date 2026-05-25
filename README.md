@@ -71,7 +71,7 @@ Crear una aplicación en Java que permita:
 
 ## Estructura general del programa
 
-```mermaid 
+```mermaid
 flowchart LR
     A[Inicio] --> B[Registro de usuario]
     B --> C[Visualizar destinos]
@@ -290,32 +290,55 @@ src/
 
 ## Cómo ejecutar el proyecto
 
-1. Abrir el proyecto en tu IDE.
-2. Compilar todas las clases.
-3. Ejecutar la clase `Main`.
-4. Se abrirá la interfaz gráfica.
-5. Registrar un usuario.
-6. Seleccionar un destino.
-7. Realizar la reserva.
-8. Consultar la información del viaje.
+### Compilación
+
+Desde la carpeta raíz del proyecto, ejecuta:
+
+```bash
+javac -d bin src/modelo/*.java src/sistema/*.java src/vistas/*.java src/App.java
+```
+
+Esto compilará todos los archivos `.java` y generará los `.class` en la carpeta `bin`.
+
+### Ejecución
+
+Una vez compilado, ejecuta:
+
+```bash
+java -cp bin App
+```
+
+La interfaz gráfica se abrirá automáticamente.
+
+### Flujo de uso
+
+1. **Registrar usuario**: Click en el botón "Registrar Usuario"
+2. **Ver destinos**: Click en "Ver Destinos" para explorar opciones disponibles
+3. **Crear reserva**: Click en "Crear Reserva" y selecciona un usuario, destino y fecha
+4. **Ver reservas**: Click en "Ver Mis Reservas" para consultar todas las reservas realizadas
 
 ---
 
 ## Manual de uso
 
 ### 1. Registro
+
 El usuario debe ingresar su nombre, correo y preferencias de viaje.
 
 ### 2. Selección de destino
+
 El sistema mostrará los destinos disponibles y sus características.
 
 ### 3. Reservar viaje
+
 El usuario debe elegir destino, fecha y observaciones adicionales.
 
 ### 4. Ver información
+
 El sistema mostrará el itinerario, el equipo necesario y recomendaciones.
 
 ### 5. Salir
+
 El usuario puede cerrar el sistema desde la ventana principal.
 
 ---
@@ -331,59 +354,3 @@ Se recomienda incluir en este apartado:
 - Video corto demostrando el flujo completo.
 
 ---
-
-## Entregables
-
-- Informe técnico.
-- Código fuente completo en Java.
-- Manual de usuario.
-- Capturas de pantalla o video de funcionamiento.
-
----
-
-## Código de honor y ética
-
-Este proyecto debe cumplir con las normas de integridad académica de la Universidad EAFIT.
-
-### Declaración sugerida
-
-> Declaro que el presente trabajo fue desarrollado por mí, respetando las normas de integridad académica.  
-> En caso de haber usado fragmentos de código externo o herramientas de apoyo, estos fueron declarados explícitamente con sus respectivas fuentes.  
-> También declaro si utilicé herramientas de inteligencia artificial y de qué manera fueron empleadas.  
-> No copié ni mandé a realizar ninguna parte del proyecto como propia.
-
----
-
-## Recomendaciones para la sustentación
-
-- Explicar la función de cada clase.
-- Mostrar cómo se usan los constructores, getters y setters.
-- Demostrar cómo se valida la información.
-- Explicar el flujo de la GUI.
-- Mostrar cómo se crean y guardan las reservas.
-- Tener claro el propósito de cada componente visual.
-
----
-
-## Posibles mejoras futuras
-
-- Guardar datos en archivos o base de datos.
-- Añadir login de usuario.
-- Agregar más destinos espaciales.
-- Calcular precios según clase de viaje.
-- Mostrar imágenes o animaciones en la GUI.
-- Agregar historial de reservas.
-
----
-
-## Autores
-
-- Estudiante: **[Tu nombre aquí]**
-- Curso: **Fundamentos de Programación**
-- Universidad: **EAFIT**
-
----
-
-## Licencia
-
-Uso académico y educativo.
