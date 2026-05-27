@@ -8,11 +8,11 @@ import java.awt.*;
 import java.util.List;
 
 public class VentanaDestinos extends JFrame {
-    private final Font mainFont = new Font("Segoe Print", Font.BOLD, 14);
     private final SistemaReservas sistema;
     private JComboBox<String> destinationCombo;
     private JTextArea destinationDetailsArea;
 
+    // Declaracion del frame de reservas
     public VentanaDestinos(SistemaReservas sistema) {
         this.sistema = sistema;
         setTitle("Seleccionar Destino");
@@ -28,27 +28,30 @@ public class VentanaDestinos extends JFrame {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
+        // Menu desplegable de seleccion de destinos en el Norte
         JPanel topPanel = new JPanel(new BorderLayout(8, 8));
         topPanel.setBorder(BorderFactory.createTitledBorder("Destinos disponibles"));
 
         JLabel selectLabel = new JLabel("Selecciona un destino:");
-        selectLabel.setFont(mainFont);
+        selectLabel.setFont(Styles.mainFont);
 
         destinationCombo = new JComboBox<>();
-        destinationCombo.setFont(mainFont);
+        destinationCombo.setFont(Styles.mainFont);
         actualizarComboDestinos();
         destinationCombo.addActionListener(e -> actualizarDetalles());
 
         topPanel.add(selectLabel, BorderLayout.NORTH);
         topPanel.add(destinationCombo, BorderLayout.CENTER);
 
+        // Area de display de la informacion del destino en el centro
         destinationDetailsArea = new JTextArea();
-        destinationDetailsArea.setFont(mainFont);
+        destinationDetailsArea.setFont(Styles.mainFont);
         destinationDetailsArea.setLineWrap(true);
         destinationDetailsArea.setWrapStyleWord(true);
         destinationDetailsArea.setEditable(false);
         destinationDetailsArea.setBackground(new Color(245, 245, 255));
 
+        // Agregar paneles al frame
         panel.add(topPanel, BorderLayout.NORTH);
         panel.add(new JScrollPane(destinationDetailsArea), BorderLayout.CENTER);
 
@@ -56,6 +59,7 @@ public class VentanaDestinos extends JFrame {
         return panel;
     }
 
+    // Actualizador menu de seleccion
     private void actualizarComboDestinos() {
         destinationCombo.removeAllItems();
         List<DestinoEspacial> destinos = sistema.listarDestinos();
@@ -64,6 +68,7 @@ public class VentanaDestinos extends JFrame {
         }
     }
 
+    // Actualizador panel de informacion de destinos
     private void actualizarDetalles() {
         String seleccionado = (String) destinationCombo.getSelectedItem();
         if (seleccionado == null) {
@@ -75,6 +80,8 @@ public class VentanaDestinos extends JFrame {
             destinationDetailsArea.setText("Destino no encontrado.");
             return;
         }
+
+        // Display de la informacion del destino seleccionado
         StringBuilder sb = new StringBuilder();
         sb.append("═════════════════════════════════════\n");
         sb.append("DESTINO: ").append(destino.getNombre()).append("\n");

@@ -8,7 +8,6 @@ import modelo.Reserva;
 import sistema.SistemaReservas;
 
 public class VentanaReservas extends JFrame {
-    private final Font mainFont = new Font("Segoe Print", Font.BOLD, 14);
     private final SistemaReservas sistema;
     private JTable reservasTable;
     private JLabel countLabel;
@@ -30,7 +29,7 @@ public class VentanaReservas extends JFrame {
 
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         countLabel = new JLabel();
-        countLabel.setFont(mainFont);
+        countLabel.setFont(Styles.mainFont);
         topPanel.add(countLabel);
 
         String[] columnNames = {"Usuario", "Correo", "Destino", "Fecha de Viaje", "Precio"};
@@ -39,7 +38,7 @@ public class VentanaReservas extends JFrame {
         cargarReservas(model);
 
         reservasTable = new JTable(model);
-        reservasTable.setFont(mainFont);
+        reservasTable.setFont(Styles.mainFont);
         reservasTable.setRowHeight(25);
         reservasTable.setEnabled(false);
 

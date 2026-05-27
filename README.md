@@ -53,7 +53,7 @@ Crear una aplicación en Java que permita:
 ### No funcionales
 
 - Desarrollado en **Java**.
-- Interfaz gráfica con **Swing** o **JavaFX**.
+- Interfaz gráfica con **Swing**.
 - Código organizado con enfoque **POO**.
 - Fácil de usar y mantener.
 - Diseño visual futurista.
@@ -63,10 +63,7 @@ Crear una aplicación en Java que permita:
 ## Tecnologías sugeridas
 
 - **Java**
-- **Swing** o **JavaFX**
-- **NetBeans / IntelliJ IDEA / Eclipse**
-- **GitHub** para control de versiones
-
+- **Swing**
 ---
 
 ## Estructura general del programa
@@ -80,7 +77,7 @@ flowchart LR
     E --> F[Mostrar información del viaje]
     F --> G[Confirmación]
     G --> H[Fin]
-    
+
 ```
 
 ---
@@ -102,20 +99,6 @@ flowchart LR
 ## Diseño orientado a objetos
 
 El sistema debe estar organizado usando clases, objetos, constructores, métodos `get` y `set`, e instanciación de objetos.
-
-### Clases sugeridas
-
-- **Usuario**
-- **DestinoEspacial**
-- **Reserva**
-- **Viaje**
-- **SistemaReservas**
-- **VentanaPrincipal**
-- **FormularioRegistro**
-- **FormularioReserva**
-- **PanelDestinos**
-
----
 
 ## Diagrama de clases
 
@@ -178,20 +161,29 @@ classDiagram
         +mostrarInformacionViaje(...)
     }
 
-    class VentanaPrincipal
-    class FormularioRegistro
-    class FormularioReserva
-    class PanelDestinos
 
     Usuario --> Reserva
-    DestinoEspacial --> Reserva
-    Reserva --> Viaje
-    SistemaReservas --> Usuario
-    SistemaReservas --> DestinoEspacial
-    SistemaReservas --> Reserva
-    VentanaPrincipal --> FormularioRegistro
-    VentanaPrincipal --> FormularioReserva
-    VentanaPrincipal --> PanelDestinos
+    DestinoEspacial  --> Viaje
+    Viaje --> Reserva
+    Reserva --> SistemaReservas
+
+```
+
+## Diagrama de GUI (Graphical user interface)
+```mermaid
+    flowchart LR
+    MainFrame
+    VentanaDestinos
+    VentanaRegistro
+    VentanaReserva
+    VentanaReservas
+    Style
+
+    Style --> MainFrame
+    MainFrame --> VentanaRegistro
+    MainFrame --> VentanaReserva
+    MainFrame --> VentanaDestinos
+    MainFrame --> VentanaReservas
 
 ```
 
@@ -277,38 +269,21 @@ src/
 │   ├── Reserva.java
 │   └── Viaje.java
 ├── sistema/
-│   └── SistemaReservas.java
+│   ├── Usuarios.csv
+│   ├── infoDestinos.csv
+│   ├── Reservas.csv
+│   └── SistemaReservas.java   
 ├── vista/
-│   ├── VentanaPrincipal.java
-│   ├── FormularioRegistro.java
-│   ├── FormularioReserva.java
-│   └── PanelDestinos.java
-└── Main.java
+│   ├── MainFrame.java
+│   ├── VentanaDestinos.java
+│   ├── VentanaRegistro.java
+│   ├── VentanaReserva.java
+│   ├── VentanaReservas.java
+│   └── Style.java
+└── App.java
 ```
 
 ---
-
-## Cómo ejecutar el proyecto
-
-### Compilación
-
-Desde la carpeta raíz del proyecto, ejecuta:
-
-```bash
-javac -d bin src/modelo/*.java src/sistema/*.java src/vistas/*.java src/App.java
-```
-
-Esto compilará todos los archivos `.java` y generará los `.class` en la carpeta `bin`.
-
-### Ejecución
-
-Una vez compilado, ejecuta:
-
-```bash
-java -cp bin App
-```
-
-La interfaz gráfica se abrirá automáticamente.
 
 ### Flujo de uso
 

@@ -10,7 +10,6 @@ import modelo.Viaje;
 import sistema.SistemaReservas;
 
 public class VentanaReserva extends JFrame {
-    private final Font mainFont = new Font("Segoe Print", Font.BOLD, 14);
     private final SistemaReservas sistema;
     private JComboBox<String> usuarioCombo;
     private JComboBox<String> destinoCombo;
@@ -44,32 +43,32 @@ public class VentanaReserva extends JFrame {
         panel.setBorder(BorderFactory.createTitledBorder("Datos de la reserva"));
 
         JLabel usuarioLabel = new JLabel("Usuario:");
-        usuarioLabel.setFont(mainFont);
+        usuarioLabel.setFont(Styles.mainFont);
         usuarioCombo = new JComboBox<>();
-        usuarioCombo.setFont(mainFont);
+        usuarioCombo.setFont(Styles.mainFont);
         actualizarComboUsuarios();
 
         JLabel destinoLabel = new JLabel("Destino:");
-        destinoLabel.setFont(mainFont);
+        destinoLabel.setFont(Styles.mainFont);
         destinoCombo = new JComboBox<>();
-        destinoCombo.setFont(mainFont);
+        destinoCombo.setFont(Styles.mainFont);
         actualizarComboDestinos();
 
-        JLabel fechaLabel = new JLabel("Fecha de viaje:");
-        fechaLabel.setFont(mainFont);
+        JLabel fechaLabel = new JLabel("Fecha de viaje: (dd/mm/aaaa)");
+        fechaLabel.setFont(Styles.mainFont);
         fechaField = new JTextField();
-        fechaField.setFont(mainFont);
+        fechaField.setFont(Styles.mainFont);
         fechaField.setToolTipText("Ejemplo: 21/08/2026");
 
         JLabel observacionesLabel = new JLabel("Observaciones:");
-        observacionesLabel.setFont(mainFont);
+        observacionesLabel.setFont(Styles.mainFont);
         observacionesArea = new JTextArea(3, 10);
-        observacionesArea.setFont(mainFont);
+        observacionesArea.setFont(Styles.mainFont);
         observacionesArea.setLineWrap(true);
         observacionesArea.setWrapStyleWord(true);
 
         JButton reservarButton = new JButton("Crear Reserva");
-        reservarButton.setFont(mainFont);
+        reservarButton.setFont(Styles.mainFont);
         reservarButton.addActionListener(e -> crearReserva());
 
         panel.add(usuarioLabel);
@@ -96,7 +95,7 @@ public class VentanaReserva extends JFrame {
         panel.setBorder(BorderFactory.createTitledBorder("Información del viaje"));
 
         infoArea = new JTextArea();
-        infoArea.setFont(mainFont);
+        infoArea.setFont(Styles.mainFont);
         infoArea.setLineWrap(true);
         infoArea.setWrapStyleWord(true);
         infoArea.setEditable(false);
@@ -192,7 +191,7 @@ public class VentanaReserva extends JFrame {
         Viaje viaje = sistema.obtenerInformacionViaje(reserva.getDestino());
         StringBuilder sb = new StringBuilder();
         sb.append("═════════════════════════════════════\n");
-        sb.append("✓ RESERVA CONFIRMADA\n");
+        sb.append("RESERVA CONFIRMADA\n");
         sb.append("═════════════════════════════════════\n\n");
         sb.append("Usuario: ").append(reserva.getUsuario().getNombre()).append("\n");
         sb.append("Correo: ").append(reserva.getUsuario().getCorreo()).append("\n");
@@ -206,4 +205,3 @@ public class VentanaReserva extends JFrame {
         infoArea.setText(sb.toString());
     }
 }
-
